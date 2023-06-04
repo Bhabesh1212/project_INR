@@ -1,0 +1,63 @@
+<!-- Add XML Schema (XSD) Data -->
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://issuer_ias.isu/xsd/ias-auth" xmlns:tns="http://issuer_ias.isu/xsd/ias-auth" elementFormDefault="qualified">
+
+
+	<!-- 	<xs:import schemaLocation="schema1.xsd" namespace="https://paysecure/merchant.soap.header/schema1.xsd" />
+	<xs:import schemaLocation="schema2.xsd" namespace="https://paysecure/merchant.soap/schema2.xsd" /> -->
+
+
+	<!-- <xs:element xmlns:q1="https://Paysecure/merchant.soap.header/" ref="RequestorCredentials" />-->
+	<xs:element name="RequestorCredentials">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="Version" type="xs:string" />
+				<xs:element name="UserCredentials" type="tns:UserCredentials" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:complexType name="UserCredentials">
+		<xs:sequence>
+			<xs:element name="UserID" type="xs:string" />
+			<xs:element name="Password" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+
+
+	<xs:element name="paysecure">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="card_no" type="xs:string" />
+				<xs:element name="card_exp_date" type="xs:string" />
+				<xs:element name="card_holder_status" type="xs:string" />
+				<xs:element name="cvd2" type="xs:string" />
+				<xs:element name="language_code" type="xs:string" />
+				<xs:element name="tran_id" type="xs:string" />
+				<xs:element name="hkey" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+	<xs:element name="CallPaySecure">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="strCommand" type="xs:string" />
+				<xs:element name="strXML" type="xs:string" />
+				<xs:element name="strSignature" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+
+	<!--<xs:element xmlns:q1="https://Paysecure/merchant.soap/" ref="CallPaySecureResponse" /> -->
+	<xs:element name="CallPaySecureResponse">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="CallPaySecureResult" type="xs:string" />
+				<xs:element name="strSignature" type="xs:string" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
+
+</xs:schema>
